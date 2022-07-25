@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import axios from 'axios';
 
 const table = {
-    sports : 19,
+    sports : 21,
     history : 23,
     politics : 24
 
@@ -38,7 +38,7 @@ export const AppProvider = ({children}) => {
         
         if(response){
            const data = response.data.results;
-           if(data.lenght){
+           if(data.lenght > 0){
             setQusetions(data);
             setLoading(false)
             setWaiting(false)
@@ -68,7 +68,7 @@ export const AppProvider = ({children}) => {
     const nextQuestion = () => {
         setIndex((oldIndex) => {
             const index = oldIndex +1;
-            if(index > oldIndex.lenght-1){
+            if(index > questions.lenght-1){
                 openModal();
                 return 0;
 
